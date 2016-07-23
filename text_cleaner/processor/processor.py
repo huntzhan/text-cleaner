@@ -44,11 +44,13 @@ class UnicodeRange(object):
 
     @property
     def regex(self):
-        # 1. bytes.
-        pattern = b'\U{begin:0>8X}-\U{end:0>8X}'.format(
+        # 1. str, for formatting.
+        pattern = '\\U{begin:0>8X}-\\U{end:0>8X}'.format(
             begin=self.begin, end=self.end,
         )
-        # 2. decode to str.
+        # 2. to bytes.
+        pattern = pattern.encode('utf-8')
+        # 3. decode to str.
         return pattern.decode('unicode_escape')
 
 
