@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from text_cleaner.processor.processor import *  # noqa
-from text_cleaner.processor.common import *  # noqa
-from text_cleaner.processor.chinese import *  # noqa
+from text_cleaner.processor.processor import merge_processors
+from text_cleaner.processor.common import ASCII
+from text_cleaner.processor.chinese import CHINESE
 
 
 def test_demo():
