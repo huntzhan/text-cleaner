@@ -58,8 +58,8 @@ setup(
     packages=find_packages(),
     install_requires=load_requirements('requirements.txt'),
     entry_points={
-        'console_scripts': [
-            'text_cleaner_cli = text_cleaner.main:entry_point'
-        ],
+        # 'console_scripts': [
+        #     'text_cleaner_cli = text_cleaner.main:entry_point'
+        # ],
     },
 )
