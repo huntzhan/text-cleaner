@@ -37,3 +37,11 @@ def test_keep():
         u'新浪微博 随时随地分享身边的新鲜事儿'
     )
     assert expected == CHINESE_CHARACTER.keep(raw)
+
+
+def test_verify():
+    assert CHINESE_CHARACTER.verify('中文')
+    assert CHINESE_CHARACTER.verify(u'中文')
+    assert not CHINESE_CHARACTER.verify('中文1')
+    assert not CHINESE_CHARACTER.verify(u'中文word')
+    assert not CHINESE_CHARACTER.verify(u'word中文')
