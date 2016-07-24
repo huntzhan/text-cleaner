@@ -2,7 +2,13 @@
 
 from text_cleaner.processor.processor import merge_processors
 from text_cleaner.processor.common import ASCII
-from text_cleaner.processor.chinese import CHINESE
+from text_cleaner.processor.chinese import CHINESE, CHINESE_CHARACTER
+
+
+CHINESE_WITH_ASCII = merge_processors(
+    [CHINESE, ASCII],
+    replace_text='',
+)
 
 
 def test_demo():
@@ -18,12 +24,16 @@ def test_keep():
     )
     expected = (
         u'中文，由天文爱好者更新维护。'
-        u'微信号：。中文的微博主页、个人资料、相册。'
+        u'微信号： 。 中文的微博主页、个人资料、相册。'
         u'新浪微博，随时随地分享身边的新鲜事儿。'
     )
-    assert expected == CHINESE.keep(raw)
 
-    CHINESE_WITH_ASCII = merge_processors(
-        [CHINESE, ASCII],
-    )
+    assert expected == CHINESE.keep(raw)
     assert raw == CHINESE_WITH_ASCII.keep(raw)
+
+    expected = (
+        u'中文 由天文爱好者更新维护 '
+        u'微信号 中文的微博主页 个人资料 相册 '
+        u'新浪微博 随时随地分享身边的新鲜事儿'
+    )
+    assert expected == CHINESE_CHARACTER.keep(raw)

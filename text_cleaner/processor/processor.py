@@ -8,11 +8,14 @@ from future.builtins.disabled import *  # noqa
 import re
 
 
+DEFAULT_REPLACE_TEXT = ' '
+
+
 def join_regexes(regexes, delimiter='|'):
     return delimiter.join(regexes)
 
 
-def merge_processors(processors, replace_text=''):
+def merge_processors(processors, replace_text=DEFAULT_REPLACE_TEXT):
     regexes = [p.regex for p in processors]
     return RegexProcessor(
         join_regexes(regexes), replace_text,
@@ -56,7 +59,7 @@ class UnicodeRange(object):
 
 class RegexProcessor(object):
 
-    def __init__(self, regex, replace_text):
+    def __init__(self, regex, replace_text=DEFAULT_REPLACE_TEXT):
         # force unicode.
         self._regex = decode(regex)
         self._replace_text = decode(replace_text)
@@ -99,12 +102,12 @@ class RegexProcessor(object):
         if match is None:
             return False
         else:
-            return match.group(1) == text
+            return match.group(0) == text
 
 
 class UnicodeRangeProcessor(RegexProcessor):
 
-    def __init__(self, ranges, replace_text=''):
+    def __init__(self, ranges, replace_text=DEFAULT_REPLACE_TEXT):
         self._ranges = ranges
 
         super().__init__(
@@ -115,7 +118,7 @@ class UnicodeRangeProcessor(RegexProcessor):
     def ranges_to_regex(self, ranges):
         joined = join_regexes(
             map(lambda ur: ur.regex, ranges),
-            delimiter=''
+            delimiter='',
         )
         return r'[{0}]+'.format(joined)
 
