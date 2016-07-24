@@ -93,7 +93,8 @@ class RegexProcessor(object):
     @force_unicode
     def keep(self, text):
         return self._replace_text.join(
-            self._regex_obj.findall(text),
+            # force non-capture.
+            m.group() for m in self._regex_obj.finditer(text),
         )
 
     @force_unicode
@@ -102,7 +103,7 @@ class RegexProcessor(object):
         if match is None:
             return False
         else:
-            return match.group(0) == text
+            return match.group() == text
 
 
 class UnicodeRangeProcessor(RegexProcessor):
