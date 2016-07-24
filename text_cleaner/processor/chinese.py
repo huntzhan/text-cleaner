@@ -45,10 +45,6 @@ CJK_SYMBOLS_AND_PUNCTUATION_RANGES = [
 
 # processors.
 
-CHINESE_COMMON = UnicodeRangeProcessor(
-    CJK_COMMON_RANGES,
-)
-
 CHINESE_EXTENSION = UnicodeRangeProcessor(
     CJK_EXTENSION_RANGES,
 )
