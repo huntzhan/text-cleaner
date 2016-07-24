@@ -2,9 +2,17 @@
 
 ## Introduction
 
-* Support Python 2.7 - 3.x.
+* Support Python 2.7, 3.3, 3.4, 3.5.
 * Simple interfaces.
 * Easy to extend.
+
+## Install
+
+```
+pip install text-cleaner
+```
+
+**WARNING FOR PYTHON 2.7 USERS**: Only UCS-4 build is supported(`--enable-unicode=ucs4`), UCS-2 build ([see this](http://stackoverflow.com/questions/31603075/how-can-i-represent-this-regex-to-not-get-a-bad-character-range-error)) is **NOT SUPPORTED** in the latest version.
 
 ## Usage
 
