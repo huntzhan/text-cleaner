@@ -54,8 +54,6 @@ URL.replace('<URL>').remove('点击http://t.cn/RtU0mZ1 查看')
 *RegexProcessor(regex, replace\_text=DEFAULT\_REPLACE\_TEXT)*
 
 * contruct a regex processor for *regex*, replace unmatched components with *replace\_text*.
-
-
 * *replace(self, new\_replace\_text)*: create a new processor, with new *replace\_text* is set.
 * *remove(self, text)*: remove all occurences of *regex* from *text*.
 * *keep(self, text)*: keep only the occurences of *regex*, remove all unmatched components from *text*.
@@ -87,7 +85,7 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 
 `text_cleaner.processor.misc`, misellanious processors:
 
-*  `URL`
+* `URL`
 * `ESCAPED_WHITESPACE`
 
 `text_cleaner.processor.chinese`, Chinese processing:
