@@ -17,6 +17,15 @@ def test_url():
 
     assert expected == URL.remove(raw)
 
+    raw = (
+        '点击http://173.255.0.1/browser.php?u=test 查看'
+    )
+    expected = (
+        u'点击TCURL 查看'
+    )
+
+    assert expected == URL.remove(raw)
+
 
 def test_escaped_whitespace():
 

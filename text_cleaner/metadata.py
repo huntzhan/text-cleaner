@@ -5,7 +5,7 @@ from __future__ import (
 
 
 NAME = 'text_cleaner'
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 AUTHORS = [
     'huntzhan',
 ]
