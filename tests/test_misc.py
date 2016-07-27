@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from text_cleaner.processor.misc import URL, ESCAPED_WHITESPACE
+from text_cleaner.processor.misc import (
+    URL,
+    ESCAPED_WHITESPACE,
+    WECHAT_EMOJI_EN,
+    WECHAT_EMOJI_ZHCN,
+    WECHAT_EMOJI,
+)
 
 
 URL = URL.replace('TCURL')
@@ -37,3 +43,33 @@ def test_escaped_whitespace():
     )
 
     assert expected == ESCAPED_WHITESPACE.remove(raw)
+
+
+def test_wechat_emoji():
+
+    raw = (
+        '[Smile][微笑][这不是表情][not an emoji]'
+    )
+    expected = (
+        u' [微笑][这不是表情][not an emoji]'
+    )
+
+    assert expected == WECHAT_EMOJI_EN.remove(raw)
+
+    raw = (
+        '[Smile][微笑][这不是表情][not an emoji]'
+    )
+    expected = (
+        u'[Smile] [这不是表情][not an emoji]'
+    )
+
+    assert expected == WECHAT_EMOJI_ZHCN.remove(raw)
+
+    raw = (
+        '[Smile][微笑][这不是表情][not an emoji]'
+    )
+    expected = (
+        u'  [这不是表情][not an emoji]'
+    )
+
+    assert expected == WECHAT_EMOJI.remove(raw)

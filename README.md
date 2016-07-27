@@ -95,6 +95,9 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 
 * `URL`
 * `ESCAPED_WHITESPACE`
+* `WECHAT_EMOJI_EN`
+* `WECHAT_EMOJI_ZHCN`
+* `WECHAT_EMOJI`
 
 `text_cleaner.processor.chinese`, Chinese processing:
 
