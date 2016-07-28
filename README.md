@@ -106,4 +106,4 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 * `CHINESE_ALL`: all CJK characters.
 * `CHINESE_EXTENSION`
 * `CHINESE_COMPATIBILITY`
-* `CHINESE_SYMBOLS_AND_PUNCTUATION_RANGES`
+* `CHINESE_SYMBOLS_AND_PUNCTUATION`

@@ -36,7 +36,6 @@ CJK_COMPATIBILITY_RANGES = [
 ]
 
 # http://www.unicode.org/charts/PDF/U3000.pdf
-# http://www.unicode.org/charts/PDF/UFF00.pdf
 
 CJK_SYMBOLS_AND_PUNCTUATION_RANGES = [
     UnicodeRange(0x3000, 0x303F),
@@ -53,7 +52,7 @@ CHINESE_COMPATIBILITY = UnicodeRangeProcessor(
     CJK_COMPATIBILITY_RANGES,
 )
 
-CHINESE_SYMBOLS_AND_PUNCTUATION_RANGES = UnicodeRangeProcessor(
+CHINESE_SYMBOLS_AND_PUNCTUATION = UnicodeRangeProcessor(
     CJK_SYMBOLS_AND_PUNCTUATION_RANGES,
 )
 
