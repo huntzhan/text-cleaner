@@ -35,8 +35,13 @@ URL = RegexProcessor(
     '|'
     # host name
     '(?:(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)'
+
     # domain name
-    '(?:\.(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*'
+    # '(?:\.(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*'
+    # http://stackoverflow.com/questions/8010005/python-re-infinite-execution
+    # http://www.regular-expressions.info/catastrophic.html
+    '(?:[a-z\u00a1-\uffff0-9\-\.]*)'
+
     # TLD identifier
     '(?:\.(?:[a-z\u00a1-\uffff]{2,}))'
     ')'
