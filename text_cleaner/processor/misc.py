@@ -10,7 +10,7 @@ from text_cleaner.processor.processor import (
 )
 
 
-URL = RegexProcessor(
+_URL_PATTERN_PREFIX = (
     # https://mathiasbynens.be/demo/url-regex
     # https://gist.github.com/dperini/729294
 
@@ -47,8 +47,19 @@ URL = RegexProcessor(
     ')'
     # port number
     '(?::\d{2,5})?'
-    # resource path
+)
+
+
+URL = RegexProcessor(
+    _URL_PATTERN_PREFIX +
+    # resource path, any non-whitespace of unicode.
     '(?:/\S*)?'
+)
+
+RESTRICT_URL = RegexProcessor(
+    _URL_PATTERN_PREFIX +
+    # resource path, any non-whitespace of ascii.
+    '(?:/[!-~]*)?'
 )
 
 

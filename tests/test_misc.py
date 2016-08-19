@@ -2,6 +2,7 @@
 
 from text_cleaner.processor.misc import (
     URL,
+    RESTRICT_URL,
     ESCAPED_WHITESPACE,
     WECHAT_EMOJI_EN,
     WECHAT_EMOJI_ZHCN,
@@ -10,6 +11,7 @@ from text_cleaner.processor.misc import (
 
 
 URL = URL.replace('TCURL')
+RESTRICT_URL = RESTRICT_URL.replace('TCURL')
 
 
 def test_url():
@@ -31,6 +33,27 @@ def test_url():
     )
 
     assert expected == URL.remove(raw)
+
+
+def test_url_of_filtering():
+
+    raw = (
+        '点击http://t.cn/RtU0mZ1查看'
+    )
+    expected = (
+        u'点击TCURL'
+    )
+
+    assert expected == URL.remove(raw)
+
+    raw = (
+        '点击http://t.cn/RtU0mZ1查看'
+    )
+    expected = (
+        u'点击TCURL查看'
+    )
+
+    assert expected == RESTRICT_URL.remove(raw)
 
 
 def test_escaped_whitespace():

@@ -94,6 +94,7 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 `text_cleaner.processor.misc`, misellanious processors:
 
 * `URL`
+* `RESTRICT_URL`
 * `ESCAPED_WHITESPACE`
 * `WECHAT_EMOJI_EN`
 * `WECHAT_EMOJI_ZHCN`
