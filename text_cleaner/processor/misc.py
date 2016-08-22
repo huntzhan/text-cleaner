@@ -57,9 +57,10 @@ URL = RegexProcessor(
 )
 
 RESTRICT_URL = RegexProcessor(
-    _URL_PATTERN_PREFIX +
-    # resource path, any non-whitespace of ascii.
-    '(?:/[!-~]*)?'
+    # _URL_PATTERN_PREFIX +
+    # # resource path, any non-whitespace of ascii.
+    # '(?:/[!-~]*)?'
+    r'https?:\/\/[!-~]+'
 )
 
 
