@@ -90,6 +90,7 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 * `ALPHA_EXTENSION`
 * `DIGIT_EXTENSION`
 * `SYMBOLS_AND_PUNCTUATION_EXTENSION`
+* `GENERAL_PUNCTUATION`
 
 `text_cleaner.processor.misc`, misellanious processors:
 

@@ -49,6 +49,9 @@ SYMBOLS_AND_PUNCTUATION_EXTENSION_RANGES = [
     UnicodeRange(0xFFE0, 0xFFEE),
 ]
 
+GENERAL_PUNCTUATION_RAGES = [
+    UnicodeRange(0x2000, 0x206F),
+]
 
 # processor.
 ALPHA = UnicodeRangeProcessor(
@@ -64,6 +67,9 @@ ASCII = UnicodeRangeProcessor(
     ASCII_ALPHA_RANGES +
     ASCII_DIGIT_RANGES +
     ASCII_SYMBOLS_AND_PUNCTUATION_RANGES,
+)
+GENERAL_PUNCTUATION = UnicodeRangeProcessor(
+    GENERAL_PUNCTUATION_RAGES,
 )
 
 
