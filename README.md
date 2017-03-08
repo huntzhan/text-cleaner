@@ -21,27 +21,27 @@ from text_cleaner import remove, keep
 
 from text_cleaner.processor.common import ASCII
 from text_cleaner.processor.chinese import CHINESE
-from text_cleaner.processor.misc import URL
+from text_cleaner.processor.misc import RESTRICT_URL
 
 # remove url and ascii characters.
 # return: u'点击  查看 '
 remove(
     '点击http://t.cn/RtU0mZ1 查看,123456,test',
-    [URL, ASCII],
+    [RESTRICT_URL, ASCII],
 )
 
 # keep chinese characters and url.
 # return: u'点击 http://t.cn/RtU0mZ1 查看'
 keep(
     '点击http://t.cn/RtU0mZ1 查看,123456,test',
-    [CHINESE, URL],
+    [CHINESE, RESTRICT_URL],
 )
 
 # use processor directly.
 # return: u'点击  查看'
-URL.remove('点击http://t.cn/RtU0mZ1 查看')
+RESTRICT_URL.remove('点击http://t.cn/RtU0mZ1 查看')
 # return: u'点击<URL> 查看'
-URL.replace('<URL>').remove('点击http://t.cn/RtU0mZ1 查看')
+RESTRICT_URL.replace('<URL>').remove('点击http://t.cn/RtU0mZ1 查看')
 ```
 
 ## Interfaces
@@ -109,3 +109,26 @@ Following processors are defined by *UnicodeRange* and regex. Read the source co
 * `CHINESE_EXTENSION`
 * `CHINESE_COMPATIBILITY`
 * `CHINESE_SYMBOLS_AND_PUNCTUATION`
+
+### URL vs. RESTRICT_URL
+
+How to define URLs is a complex problem.
+We provide two choices for our users.
+
+* `URL`: truncate urls till whitespaces.
+* `RESTRICT_URL`: truncate urls till non-whitespace ASCII ([!-~] in the ASCII table)
+
+For Chinese users, we recommend using `RESTRICT_URL`.
+
+```python
+from text_cleaner.processor.misc import RESTRICT_URL, URL
+
+URL.remove('点击http://t.cn/RtU0mZ1 查看')
+# '点击 查看'
+
+URL.remove('点击http://t.cn/RtU0mZ1查看')
+# '点击 '
+
+RESTRICT_URL.remove('点击http://t.cn/RtU0mZ1查看')
+# '点击 查看'
+```
