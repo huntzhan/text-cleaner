@@ -35,10 +35,17 @@ CJK_COMPATIBILITY_RANGES = [
     UnicodeRange(0x2F800, 0x2FA1F),
 ]
 
-# http://www.unicode.org/charts/PDF/U3000.pdf
+# https://gist.github.com/shingchi/64c04e0dd2cbbfbc1350
 
 CJK_SYMBOLS_AND_PUNCTUATION_RANGES = [
+    # http://www.unicode.org/charts/PDF/U3000.pdf
     UnicodeRange(0x3000, 0x303F),
+
+    # http://www.unicode.org/charts/PDF/UFF00.pdf
+    UnicodeRange(0xFF00, 0xFFEF),
+
+    # http://www.unicode.org/charts/PDF/UFE30.pdf
+    UnicodeRange(0xFE30, 0xFE4F),
 ]
 
 
