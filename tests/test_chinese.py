@@ -2,7 +2,7 @@
 
 from text_cleaner.processor.processor import merge_processors
 from text_cleaner.processor.common import ASCII
-from text_cleaner.processor.chinese import CHINESE, CHINESE_CHARACTER
+from text_cleaner.processor.chinese import CHINESE, CHINESE_CHARACTER, CHINESE_SYMBOLS_AND_PUNCTUATION
 
 
 CHINESE_WITH_ASCII = merge_processors(
@@ -14,6 +14,10 @@ CHINESE_WITH_ASCII = merge_processors(
 def test_demo():
     assert u'中文测试' == CHINESE.keep('中文测试')
     assert u'中文测试' == CHINESE.keep(u'中文测试')
+
+
+def test_punctuation():
+    assert u'hello://,.你好 ' == CHINESE_SYMBOLS_AND_PUNCTUATION.remove(u'hello://,.你好，。！？〜')
 
 
 def test_keep():
